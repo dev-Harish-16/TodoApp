@@ -1,0 +1,47 @@
+<section class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 px-3">
+  <!-- Added--Task -->
+  <div class=" col task--added">
+    <h3 class="text-center ">Task details</h3>
+    <div class="card shadow-5 border border-3 border-dark rounded-5 mt-2 p-3" style="background-color: lavender;"
+      *ngFor="let data of taskArray.reverse() index as ind">
+      <div class="d-flex justify-content-center align-items-center">
+        <h5 class="text-start"><i class="fas fa-pen-square fa-lg px-2"></i>{{data.data | titlecase}}</h5>
+        <div class="ms-auto">
+          <a mdbRipple role="button" class="mx-3" (click)="completedTask(ind)"><i
+              class="fas fa-check-circle text-success fa-xl"></i></a>
+          <a mdbRipple role="button" class=" " (click)="deletedTask(ind)"><i
+              class="fas fa-trash-alt text-danger fa-xl"></i></a>
+        </div>
+      </div>
+      <div class="text-end py-2">
+        <small class="fst-italic">Created on: <span class="fw-bold">{{data.dateValue |
+            date:'shortDate'}}</span> at <span class="fw-bold">{{data.dateValue |
+            date:'shortTime'}}</span></small>
+      </div>
+    </div>
+    <p *ngIf="taskArray.length===0" class="text-danger fw-bold py-2 text-center">No Task has been Added</p>
+  </div>
+  <!-- Completed--Task -->
+  <div class="col task--deleted">
+    <div class="pt-3">
+      <button mdbRipple class="btn btn-secondary d-block mx-auto" *ngIf="isTrue===false" (click)=displayData()> Tap
+        to view Completed Task</button>
+      <button mdbRipple class="btn btn-primary  d-block mx-auto" *ngIf="isTrue===true" (click)=displayData()> Tap to
+        close Completed Task</button>
+
+      <div *ngIf="isTrue===true" class="text-center mt-2 text-dark shadow-4 p-3"
+        style="border-radius: 10px;background-color:lavender;">
+        <div class="d-flex justify-content-end">
+          <a mdbRipple role="button" class="btn btn-danger mt-2 " (click)=removeAll()><i
+              class="far fa-trash-alt fa-xl text-white"></i></a>
+        </div>
+        <ul *ngFor="let doneData of taskDone" class="list-unstyled">
+          <li class="text-start"><i class="fas fa-check-circle text-success  pe-3 "></i>{{doneData.data | titlecase}}
+          </li>
+        </ul>
+        <p *ngIf="taskDone.length===0" class="text-danger fw-bold">OOPS! No Task has been Completed</p>
+
+      </div>
+    </div>
+  </div>
+</section>

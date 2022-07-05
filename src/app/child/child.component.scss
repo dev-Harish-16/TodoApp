@@ -1,0 +1,11 @@
+.task--added::-webkit-scrollbar,
+.task--deleted::-webkit-scrollbar {
+    display: none;
+}
+
+.task--added,
+.task--deleted {
+    border-radius: 10px;;
+    overflow-y: scroll;
+    height: 350px;
+}
