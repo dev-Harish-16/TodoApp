@@ -3,7 +3,7 @@
   <div class=" col task--added">
     <h3 class="text-center ">Task details</h3>
     <div class="card shadow-5 border border-3 border-dark rounded-5 mt-2 p-3" style="background-color: lavender;"
-      *ngFor="let data of taskArray.reverse() index as ind">
+      *ngFor="let data of taskArray index as ind">
       <div class="d-flex justify-content-center align-items-center">
         <h5 class="text-start"><i class="fas fa-pen-square fa-lg px-2"></i>{{data.data | titlecase}}</h5>
         <div class="ms-auto">
